@@ -53,35 +53,13 @@
       $list.hide();
     });
   }
-  var Singleton = (function () {
-    var instance;
-    function createInstance() {
-        var object = new new CustomSelect();
-        return object;
-    }
-    return {
-        getInstance: function () {
-            if (!instance) {
-                instance = createInstance();
-            }
-            return instance;
-        }
-    };
-})();
  
-function run() {
- 
-    var instance1 = Singleton.getInstance();
-    var instance2 = Singleton.getInstance();
- 
-    alert("Same instance? " + (instance1 === instance2));  
-}
   function init(){
     if (typeof $ === 'undefined') throw new Error('this module require jquery');
     if ($('[data-tr-select]').length) return;
 
     var instance = new CustomSelect();
-    $('[data-tr-select]').each(Singleton.getInstance().renderCustomSelect(this));
+    $('[data-tr-select]').each(instance.renderCustomSelect(this));
   }
 
   // CALL INIT METHOD
