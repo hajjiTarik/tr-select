@@ -1,0 +1,73 @@
+/**
+** CUSTOM SELECT MODULE
+**/
+
+.tr-select-hidden {
+  //display: none;
+  visibility: hidden;
+  padding-right: 10px;
+}
+.tr-select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  color: #404040;
+  width: 220px;
+  height: 50px;
+}
+.tr-select > span {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+.tr-select .tr-select-styled {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    padding: 17px 15px;
+    transition: all .2s ease-in;
+    border-radius: 10px
+    height: 50px;
+    color: #F0F0F0;
+}
+.tr-select .tr-select-styled:active, .tr-select .tr-select-styled.active {
+    background-color: #111;
+    color: #fff;
+}
+.tr-select .tr-select-styled:active ~ span, .tr-select .tr-select-styled:active ~ span{
+    transform: rotate(90deg);
+}
+.tr-select-options:after{
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-color: transparent transparent #f0f0f0 transparent;
+}
+.tr-select-options li{
+	margin: 0;
+    padding: 12px 0;
+    text-indent: 15px;
+    transition: all 0.15s ease-in;
+}
+.tr-select-options li:first-child, .tr-select-options li:last-child{
+    border-radius: 10px 10px 0 0;
+}
+.tr-select-options li:hover{
+    color: #fff;
+    background: #f0f0f0;
+}
+.tr-select-options li[rel="hide"] {
+	display: none;
+}

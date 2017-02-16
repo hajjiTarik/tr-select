@@ -1,8 +1,11 @@
-(function ($) {
+(function () {
   function CustomSelect () {
     this.__document = $(document);
+    console.log(1);
   }
   CustomSelect.prototype.renderCustomSelect = function (context) {
+
+
     var $this = $(context);
     var numberOfOptions = $(context).children('option').length;
     var $that = $this;
@@ -20,13 +23,18 @@
     var $list = $('<ul />', {
       class: 'tr-select-options'
     }).insertAfter($styledSelect);
-    for (let i = 0; i < numberOfOptions; i++) {
+
+    for (var i = 0; i < numberOfOptions; i++) {
       $('<li/>', {
         text: $this.children('option').eq(i).text(),
         rel: $this.children('option').eq(i).val(),
       }).appendTo($list);
     }
+
+    console.log($list);
     var $listItems = $list.children('li');
+
+    console.log($listItems);
 
 
     $styledSelect.on('click touch',function (e) {
@@ -55,13 +63,17 @@
   }
  
   function init(){
-    if (typeof $ === 'undefined') throw new Error('this module require jquery');
-    if ($('[data-tr-select]').length) return;
+    if (typeof $ === 'undefined') throw new Error('tr-select module require jquery');
+    if ($('[data-tr-select]').length === 0) return;
+
 
     var instance = new CustomSelect();
-    $('[data-tr-select]').each(instance.renderCustomSelect(this));
+    $('[data-tr-select]').each(function(){
+      console.log(1);
+      instance.renderCustomSelect(this)
+    });
   }
 
   // CALL INIT METHOD
   init();
-})();
+})($);
